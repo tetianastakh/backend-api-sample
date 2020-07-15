@@ -1,0 +1,26 @@
+##
+# IMPORTANT
+# This file contains development configuration overriding docker-compose.yml
+# It is not meant to be used directly. Instead, use it like this:
+#   docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+#
+version: '2.2'
+services:
+  rails-app:
+    # Mount current working directory as /srv/app in the image (this should be in sync with Dockerfile)
+    volumes:
+      - .:/srv/app
+    # This service exposes port 3000 in Dockerfile. Attach that port to port 3000 on host system!
+    ports:
+      - "3000:3000"
+    #
+    # Run this command on container start:
+    # Use a wrapper that runs bundle install at start if necessary
+    command: >
+      ./bin/rails-dev-server-entrypoint -b 0.0.0.0 -p 3000
+    tty: true
+    stdin_open: true
+
+  sidekiq:
+    stdin_open: true
+    tty: true
