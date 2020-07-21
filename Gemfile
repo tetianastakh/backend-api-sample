@@ -61,7 +61,7 @@ gem 'countries', '~> 3.0.0'
 gem 'rest-client', '~> 2.0.2'
 
 # geocoder
-gem 'geocoder', '~> 1.2.6'
+gem 'geocoder', '~> 1.6.1'
 gem 'geokit', '~> 1.13.1'
 
 gem 'request_store', '~> 1.4.1'
